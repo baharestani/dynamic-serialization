@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using Newtonsoft.Json;
 
-namespace ConsoleApp5
+namespace Deserializer
 {
     class Program
     {

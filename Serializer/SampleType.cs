@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Serializer
 {
@@ -11,7 +13,9 @@ namespace Serializer
 
         public string MyProperty { get; set; } = "My Value";
 
-        public SecondType Second = new SecondType { X = 8 };
+        public ComplexType Second = new ComplexType();
+
+        public List<int> Numbers { get; set; } = Enumerable.Range(1, 5).ToList();
 
         public string F()
         {
@@ -20,8 +24,10 @@ namespace Serializer
     }
 
     [Serializable]
-    public class SecondType
+    public class ComplexType
     {
         public int X;
+
+        public string Y = "Hi";
     }
 }

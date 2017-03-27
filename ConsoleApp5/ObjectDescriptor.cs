@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Security.Permissions;
 using System.Text.RegularExpressions;
 
-namespace ConsoleApp5
+namespace Deserializer
 {
     [Serializable]
     class ObjectDescriptor : ISerializable
