@@ -14,7 +14,6 @@ namespace Serializer
         static void Main(string[] args)
         {
             Serialize("C:\\object.dat");
-
         }
 
 

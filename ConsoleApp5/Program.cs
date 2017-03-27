@@ -9,25 +9,24 @@ namespace ConsoleApp5
     {
         static void Main(string[] args)
         {
-            Deserialize(@"C:\object.dat");
+            using (var fs = new FileStream(@"C:\object.dat", FileMode.Open))
+            {
+                Deserialize(fs);
+            }
         }
 
-        private static void Deserialize(string fileName)
+        private static void Deserialize(Stream stream)
         {
-            using (var fs = new FileStream(fileName, FileMode.Open))
+            var formatter = new BinaryFormatter
             {
-                var formatter = new BinaryFormatter
-                {
-                    Binder = new ObjectDescriptorDeserializationBinder()
-                };
+                Binder = new ObjectDescriptorDeserializationBinder()
+            };
 
-                dynamic obj = ((ObjectDescriptor)formatter.Deserialize(fs)).ToDynamicObject();
+            dynamic obj = ((ObjectDescriptor)formatter.Deserialize(stream)).ToDynamicObject();
 
-                string json = JsonConvert.SerializeObject(obj, Formatting.Indented);
+            string json = JsonConvert.SerializeObject(obj, Formatting.Indented);
 
-                Console.WriteLine(json);
-            }
-
+            Console.WriteLine(json);
         }
 
 
